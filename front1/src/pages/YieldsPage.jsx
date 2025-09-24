@@ -345,7 +345,7 @@ const YieldPredictionForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    // ✅ Basic validation (optional)
+    // Basic validation
     if (!formData.Crop || !formData.season) {
       alert("Please fill in all required fields (Crop Type & Season).");
       return;
@@ -355,7 +355,7 @@ const YieldPredictionForm = () => {
     setSubmitted(true);
   
     try {
-      const response = await fetch("http://localhost:5001/predict", {
+      const response = await fetch("http://10.190.52.128:5001/predict", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -363,14 +363,19 @@ const YieldPredictionForm = () => {
         body: JSON.stringify(formData),
       });
   
+      // ✅ Parse JSON once
+      const data = await response.json();
+  
       if (!response.ok) {
-        throw new Error(`Server error: ${response.statusText}`);
+        throw new Error(`Server error: ${response.status} - ${response.statusText}`);
       }
   
-      const result = await response.json();
+      // // Access fields returned by your backend
+      // setPrediction(data.recommendation_text || "No prediction available");
+      // setIrrigationPlan(data.irrigation_plan || null); // optional
   
-      // ✅ Assuming backend returns { prediction: "some value" }
-      setPrediction(result.prediction || "No prediction available");
+      console.log("Prediction response:", data);
+  
     } catch (error) {
       console.error("API Error:", error);
       setErrors({
@@ -381,6 +386,7 @@ const YieldPredictionForm = () => {
       setIsLoading(false);
     }
   };
+  
 
   const InputField = ({ label, type = "text", field, placeholder, icon: Icon, options, step }) => (
     <div>
@@ -451,24 +457,7 @@ const YieldPredictionForm = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
-      {/* Header */}
-      <div className="bg-white shadow-lg border-b-4 border-green-500">
-        <div className="max-w-6xl mx-auto px-6 py-8">
-          <div className="text-center">
-            <div className="flex justify-center mb-4">
-              <div className="bg-green-100 p-4 rounded-full">
-                <Leaf className="w-12 h-12 text-green-600" />
-              </div>
-            </div>
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">
-              Smart Crop Yield Predictor
-            </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Advanced agricultural analytics powered by machine learning to predict your crop yields with precision
-            </p>
-          </div>
-        </div>
-      </div>
+  
 
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid lg:grid-cols-2 gap-12">
@@ -558,7 +547,7 @@ const YieldPredictionForm = () => {
                     label="Soil Type"
                     field="Soil_Type"
                     placeholder="Select Soil Type"
-                    options={["Sandy", "Loamy", "Clay", "Silty"]}
+                    options={["Alluvial", "Red", "Desert", "Mountain","Black","Laterite"]}
                   />
                 </div>
               </div>

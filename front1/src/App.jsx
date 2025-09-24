@@ -6,7 +6,7 @@ import AgriTechLandingPage from "./pages/AgriTechLandingPage";
 import YieldsPage from "./pages/YieldsPage";
 // import CropsPage from "./pages/CropsPage";
 // import WeatherPage from "./pages/WeatherPage";
-// import AboutPage from "./pages/AboutPage";
+import AboutPage from "./pages/AboutPage";
 // import AgriWeatherPage from "./pages/AgriWeatherPage";
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/yields" element={<YieldsPage />} />
           {/* <Route path="/crops" element={<CropsPage />} /> */}
           {/* <Route path="/weather" element={<AgriWeatherPage />} /> */}
-          {/* <Route path="/about" element={<AboutPage />} /> */}
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </div>
     </Router>
