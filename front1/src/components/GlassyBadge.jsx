@@ -22,7 +22,7 @@ export default function GlassyBadge() {
 
       {/* label */}
       <span className="text-sm font-semibold drop-shadow-md">
-        Top notch webinar platform
+        Farming insights for Profitable Agriculture
       </span>
 
       {/* blinking keyframes */}

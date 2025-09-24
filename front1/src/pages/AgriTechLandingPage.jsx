@@ -5,6 +5,7 @@ import ContentGridSection from './ContentGridSection'
 import SolutionsGridSection from './SolutionGridSection'
 import Footer from './Footer'
 import logo from '../assets/logo.png'
+// import ChatBot from '../components/ChatBot'
 
 const AgriTechLandingPage = () => {
   return (
@@ -13,8 +14,8 @@ const AgriTechLandingPage = () => {
         <div className='w-22 '> <img src={logo} alt="logo" /></div>
          <div><PillNavbar/></div>
          <div className='flex gap-5 items-center font-bold'>
-        <div>Sign in</div>
-        <div className='border-1 rounded-full p-2'>Sign Up</div>
+        <div>Hindi</div>
+        <div className='border-1 rounded-full p-2'>English</div>
          </div>
           
          
@@ -24,6 +25,7 @@ const AgriTechLandingPage = () => {
        <ContentGridSection/>
        <SolutionsGridSection/>
        <Footer/>
+     
     </div>
   )
 }

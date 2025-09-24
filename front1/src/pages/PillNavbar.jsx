@@ -21,7 +21,7 @@ const PillNavbar = () => {
   
 
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex bg-zinc-800 rounded-full p-1.5 items-center gap-x-1">
+      <nav className="hidden md:flex bg-black rounded-full p-1.5 items-center gap-x-1">
         {navItems.map((item) => {
           const isActive = location.pathname === item.path;
           return (
