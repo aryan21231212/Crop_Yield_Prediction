@@ -22,13 +22,13 @@ const App = () => {
           <Route path="/" element={<AgriTechLandingPage />} />
           <Route path="/yields" element={<YieldsPage />} />
           {/* <Route path="/crops" element={<CropsPage />} /> */}
-<<<<<<< HEAD
+
           {/* <Route path="/weather" element={<AgriWeatherPage />} /> */}
           <Route path="/about" element={<AboutPage />} />
-=======
+
           <Route path="/disease" element={<CropDiseasePredictor />} />
           {/* <Route path="/about" element={<AboutPage />} /> */}
->>>>>>> 7f5d779 (changes made)
+
         </Routes>
       </div>
     </Router>

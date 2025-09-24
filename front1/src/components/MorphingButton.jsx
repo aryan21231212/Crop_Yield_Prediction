@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MdArrowOutward } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function MorphingButton() {
   const [hovered, setHovered] = useState(false);
@@ -54,8 +55,8 @@ export default function MorphingButton() {
           </div>
 
           {/* Second Text + Icon */}
-          <a href="https://www.linkedin.com/in/dabas-abhishek">
-          <div
+            <Link to={"/yields"}> 
+            <div
             className={`
               flex items-center space-x-1 transition-all duration-500 ease-out
               ${hovered ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-3 blur-sm"}
@@ -84,7 +85,9 @@ export default function MorphingButton() {
             >
               {secondText[1]}
             </span>
-          </div></a>
+          </div>
+            </Link>
+          
         </div>
       </div>
 
