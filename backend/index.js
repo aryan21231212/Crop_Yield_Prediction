@@ -10,7 +10,7 @@ app.use(cors());
 const PORT = 3000;
 
 //DB
-mongoose.conn
+
 
 
 app.listen(PORT,()=>{
