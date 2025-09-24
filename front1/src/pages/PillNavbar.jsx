@@ -7,7 +7,7 @@ const navItems = [
   { name: "Home", path: "/", icon: FiHome },
   { name: "Yields", path: "/yields", icon: null },
   { name: "Crops", path: "/crops", icon: null },
-  { name: "Weather", path: "/weather", icon: null },
+
   { name: "About us", path: "/about", icon: null },
 ];
 
