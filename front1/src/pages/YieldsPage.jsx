@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Leaf, Cloud, Droplets, Thermometer, Bug, AlertCircle, CheckCircle, Loader, MapPin, Navigation } from "lucide-react";
+import { Leaf, Cloud, Droplets, Thermometer, Bug, AlertCircle, CheckCircle, Loader, MapPin, Navigation, Sun } from "lucide-react";
 
 const WeatherDataPage = ({ onBack, onWeatherData }) => {
   const [location, setLocation] = useState("");
@@ -10,13 +10,14 @@ const WeatherDataPage = ({ onBack, onWeatherData }) => {
   const mockWeatherAPI = async (location) => {
     await new Promise(resolve => setTimeout(resolve, 1500));
     
-    // Mock weather data
+    // Mock weather data with sunshine hours
     const mockData = {
       location: location || "Current Location",
       Temp_Avg_C: Math.round(Math.random() * 20 + 15),
       Humidity: Math.round(Math.random() * 30 + 50),
       Rainfall_mm: Math.round(Math.random() * 100 + 50),
       Soil_pH: (Math.random() * 2 + 6).toFixed(1),
+      Sunshine_hr: (Math.random() * 6 + 4).toFixed(1), // 4-10 hours of sunshine
       weather: ["Sunny", "Cloudy", "Rainy", "Partly Cloudy"][Math.floor(Math.random() * 4)]
     };
     
@@ -93,7 +94,7 @@ const WeatherDataPage = ({ onBack, onWeatherData }) => {
             Get Weather Data
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Fetch current weather conditions and soil data for accurate yield predictions
+            Fetch current weather conditions, sunshine data, and soil data for accurate yield predictions
           </p>
         </div>
 
@@ -137,7 +138,7 @@ const WeatherDataPage = ({ onBack, onWeatherData }) => {
                   onClick={getCurrentLocation}
                   disabled={isLoading}
                   className="w-full bg-green-600 text-white py-3 rounded-xl hover:bg-green-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-                  >
+                >
                   {isLoading ? (
                     <>
                       <Loader className="w-5 h-5 animate-spin" />
@@ -185,8 +186,16 @@ const WeatherDataPage = ({ onBack, onWeatherData }) => {
                         <span>{weatherData.Rainfall_mm}mm</span>
                       </div>
                       <div className="flex items-center gap-2">
+                        <Sun className="w-4 h-4" />
+                        <span>{weatherData.Sunshine_hr}h</span>
+                      </div>
+                      <div className="flex items-center gap-2">
                         <Leaf className="w-4 h-4" />
                         <span>pH {weatherData.Soil_pH}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Cloud className="w-4 h-4" />
+                        <span>{weatherData.weather}</span>
                       </div>
                     </div>
                   </div>
@@ -212,7 +221,7 @@ const WeatherDataPage = ({ onBack, onWeatherData }) => {
         {/* Info Section */}
         <div className="mt-8 bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
           <h3 className="text-lg font-semibold text-gray-800 mb-4">What We'll Get</h3>
-          <div className="grid md:grid-cols-4 gap-4 text-sm">
+          <div className="grid md:grid-cols-5 gap-4 text-sm">
             <div className="text-center">
               <div className="bg-orange-100 p-3 rounded-full w-12 h-12 mx-auto mb-2 flex items-center justify-center">
                 <Thermometer className="w-6 h-6 text-orange-600" />
@@ -233,6 +242,13 @@ const WeatherDataPage = ({ onBack, onWeatherData }) => {
               </div>
               <p className="font-semibold">Rainfall</p>
               <p className="text-gray-500">Precipitation</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-yellow-100 p-3 rounded-full w-12 h-12 mx-auto mb-2 flex items-center justify-center">
+                <Sun className="w-6 h-6 text-yellow-600" />
+              </div>
+              <p className="font-semibold">Sunshine</p>
+              <p className="text-gray-500">Daily hours</p>
             </div>
             <div className="text-center">
               <div className="bg-green-100 p-3 rounded-full w-12 h-12 mx-auto mb-2 flex items-center justify-center">
@@ -256,6 +272,7 @@ const YieldPredictionForm = () => {
     Temp_Avg_C: "",
     Rainfall_mm: "",
     Humidity: "",
+    Sunshine_hr: "",
     Soil_pH: "",
     Soil_Type: "",
     N: "",
@@ -281,6 +298,7 @@ const YieldPredictionForm = () => {
       Temp_Avg_C: weatherData.Temp_Avg_C.toString(),
       Humidity: weatherData.Humidity.toString(),
       Rainfall_mm: weatherData.Rainfall_mm.toString(),
+      Sunshine_hr: weatherData.Sunshine_hr.toString(),
       Soil_pH: weatherData.Soil_pH.toString(),
     }));
   };
@@ -301,6 +319,10 @@ const YieldPredictionForm = () => {
     
     if (!formData.Humidity || formData.Humidity < 0 || formData.Humidity > 100) {
       newErrors.Humidity = "Humidity must be between 0% and 100%";
+    }
+    
+    if (!formData.Sunshine_hr || formData.Sunshine_hr < 0 || formData.Sunshine_hr > 24) {
+      newErrors.Sunshine_hr = "Sunshine hours must be between 0 and 24";
     }
     
     if (!formData.Soil_pH || formData.Soil_pH < 0 || formData.Soil_pH > 14) {
@@ -363,16 +385,15 @@ const YieldPredictionForm = () => {
         body: JSON.stringify(formData),
       });
   
-      // ✅ Parse JSON once
+      // Parse JSON once
       const data = await response.json();
   
       if (!response.ok) {
         throw new Error(`Server error: ${response.status} - ${response.statusText}`);
       }
   
-      // // Access fields returned by your backend
-      // setPrediction(data.recommendation_text || "No prediction available");
-      // setIrrigationPlan(data.irrigation_plan || null); // optional
+      // Access fields returned by your backend
+      setPrediction(data.recommendation_text || "No prediction available");
   
       console.log("Prediction response:", data);
   
@@ -386,7 +407,6 @@ const YieldPredictionForm = () => {
       setIsLoading(false);
     }
   };
-  
 
   const InputField = ({ label, type = "text", field, placeholder, icon: Icon, options, step }) => (
     <div>
@@ -457,8 +477,6 @@ const YieldPredictionForm = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
-  
-
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Form Section */}
@@ -505,7 +523,7 @@ const YieldPredictionForm = () => {
                     Get Weather Data
                   </button>
                 </div>
-                <div className="grid md:grid-cols-3 gap-4">
+                <div className="grid md:grid-cols-2 gap-4">
                   <InputField
                     label="Temperature"
                     type="number"
@@ -526,6 +544,14 @@ const YieldPredictionForm = () => {
                     field="Humidity"
                     placeholder="%"
                     icon={Cloud}
+                  />
+                  <InputField
+                    label="Sunshine Hours"
+                    type="number"
+                    field="Sunshine_hours"
+                    placeholder="hours/day"
+                    icon={Sun}
+                    step="0.1"
                   />
                 </div>
               </div>
@@ -715,7 +741,7 @@ const YieldPredictionForm = () => {
                   <div>
                     <h4 className="font-semibold text-gray-800">Weather Analysis</h4>
                     <p className="text-gray-600 text-sm">
-                      Temperature, rainfall, and humidity patterns are analyzed for optimal growing conditions.
+                      Temperature, rainfall, humidity, and sunshine patterns are analyzed for optimal growing conditions.
                     </p>
                   </div>
                 </div>
