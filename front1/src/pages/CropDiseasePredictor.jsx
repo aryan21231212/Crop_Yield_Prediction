@@ -68,11 +68,15 @@ const CropDiseasePredictor = () => {
   return (
     <div className="relative min-h-screen bg-gray-800 flex items-center justify-center p-4 sm:p-6 lg:p-8">
         {/* Background Image with Dark Overlay */}
-        <div 
-            className="absolute inset-0 z-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('https://th.bing.com/th/id/R.cb4282deaeb66c9297c43cb1198e3972?rik=CWmd4LDgynzsGQ&riu=http%3a%2f%2fpicz.in%2fdata%2fmedia%2f6%2fshutterstock_11131789_1932x1445.jpg&ehk=YZNXH1RLdJ%2bpaJJihqwcOwTYTfPoCjThHFdrypU8rCo%3d&risl=&pid=ImgRaw&r=0')" }}
-        ></div>
-        <div className="absolute inset-0 z-10 bg-black opacity-60"></div>
+{/* Background Image with Dark Overlay */}
+<div className="absolute inset-0 z-0">
+  <img
+    src="https://imgs.search.brave.com/96-jB6HcimrNaYydCCb0AHWQ3zFAbXGDaHbU7ZaznLk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXQuY29t/L3cvZnVsbC82L2Mv/YS8yNjg4ODMtMjE2/MHgxOTIwLWRlc2t0/b3AtaGQtZmFybS13/YWxscGFwZXItaW1h/Z2UuanBn"
+    alt="Farming Background"
+    className="w-full h-full object-cover"
+  />
+</div>
+<div className="absolute inset-0 z-10 bg-black opacity-40"></div>
 
         {/* Main Content Card */}
         <div className="relative z-20 max-w-5xl w-full bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
