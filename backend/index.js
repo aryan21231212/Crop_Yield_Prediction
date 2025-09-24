@@ -2,7 +2,8 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import predictRoutes from "./routes/disease.js"; // use import instead of require
+import predictRoutes from "./routes/disease.js";
+import scheduleRoutes from "./routes/scheduler.js";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/predict", predictRoutes);
+app.use("/api/schedule", scheduleRoutes);
 
 // Root route
 app.get("/", (req, res) => {

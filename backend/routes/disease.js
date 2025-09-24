@@ -5,7 +5,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 const router = express.Router();
 
 // --- Security Warning: Use Environment Variables for API Key ---
-const genAI = new GoogleGenerativeAI('AIzaSyB9OdehM6XW0FbKfPM6--Xmmk4gT_HI8RI');
+const genAI = new GoogleGenerativeAI('AIzaSyB7SwELTT21AjgqmVtMLVqmExuqD4jXTS4');
 console.log("Generative AI API Key Loaded:", !!process.env.GENERATIVE_AI_API_KEY);
 // Setup Multer for in-memory file storage
 const storage = multer.memoryStorage();
@@ -27,8 +27,7 @@ router.post('/', upload.single('image'), async (req, res) => {
     if (!req.file) {
       return res.status(400).send('No file uploaded.');
     }
-
-  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro' });
+ const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
 
  const prompt = `

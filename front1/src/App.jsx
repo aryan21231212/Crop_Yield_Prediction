@@ -8,6 +8,7 @@ import YieldsPage from "./pages/YieldsPage";
 import CropDiseasePredictor from "./pages/CropDiseasePredictor";
 import AboutPage from "./pages/AboutPage";
 import ChatBotWidget from "./pages/ChatBotWidget";
+import CropScheduler from "./pages/CropScheduler";
 
 const App = () => {
   return (
@@ -23,7 +24,7 @@ const App = () => {
           {/* <Route path="/crops" element={<CropsPage />} /> */}
 
           {/* <Route path="/weather" element={<AgriWeatherPage />} /> */}
-          <Route path="/about" element={<AboutPage />} />
+          <Route path="/sche" element={<CropScheduler />} />
 
           <Route path="/disease" element={<CropDiseasePredictor />} />
           {/* <Route path="/about" element={<AboutPage />} /> */}
