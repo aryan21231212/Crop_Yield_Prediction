@@ -2,6 +2,8 @@ import React from 'react'
 import PillNavbar from './PillNavbar'
 import Homepage from './Homepage'
 import ContentGridSection from './ContentGridSection'
+import SolutionsGridSection from './SolutionGridSection'
+import Footer from './Footer'
 
 const AgriTechLandingPage = () => {
   return (
@@ -19,6 +21,8 @@ const AgriTechLandingPage = () => {
       </div>
        <Homepage/>
        <ContentGridSection/>
+       <SolutionsGridSection/>
+       <Footer/>
     </div>
   )
 }

@@ -5,10 +5,10 @@ import { AiOutlinePlus } from "react-icons/ai";
 const categories = ["Organic farm", "Automation farm", "Bio-medical farm"];
 
 const cardImages = [
-  "https://via.placeholder.com/400x500/e0e0e0/cccccc?text=Image+1",
-  "https://via.placeholder.com/400x350/d0d0d0/bbbbbb?text=Image+2",
-  "https://via.placeholder.com/400x450/c0c0c0/aaaaaa?text=Image+3",
-  "https://via.placeholder.com/400x400/b0b0b0/999999?text=Image+4",
+  "https://thumbs.dreamstime.com/b/farmer-digital-tablet-controls-autonomous-tractor-smart-farm-271870978.jpg",
+  "https://img.freepik.com/premium-photo/pesticidespraying-tractor_410516-14598.jpg",
+  "https://static.vecteezy.com/system/resources/previews/005/885/493/non_2x/agriculture-shooting-with-quadrocopter-tractor-on-the-field-photo.jpg",
+  "https://d2xsikgwxkxyoe.cloudfront.net/media/40583/career.png",
 ];
 
 const ContentGridSection = () => {
@@ -51,7 +51,10 @@ const ContentGridSection = () => {
       {/* Masonry / Collage Image Grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[200px]">
         {/* Card 1: Get Started */}
-        <div className="bg-white rounded-3xl p-6 flex flex-col justify-center items-center text-center shadow-lg relative row-span-2">
+        <div
+  className="bg-[url('https://th.bing.com/th/id/OIP.93z88XlN4AQF9_76ezZjEQHaE7?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3')] bg-cover bg-center bg-no-repeat
+             rounded-3xl p-6 flex flex-col justify-center items-center text-center shadow-lg relative row-span-2"
+>
           <h3 className="text-3xl font-extrabold text-zinc-900 mb-2">Get Started Now</h3>
           <div className="absolute -top-4 -right-4 bg-emerald-500 rounded-full p-3 shadow-md">
             <AiOutlinePlus className="text-white text-3xl" />

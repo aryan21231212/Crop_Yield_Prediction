@@ -13,7 +13,7 @@ const HeroSection = () => {
       <div
         className="absolute bottom-0 left-0 w-full h-[300px] md:h-[450px] bg-cover bg-center"
         style={{
-          backgroundImage: 'url("https://www.freepik.com/free-photo/tea-garden-fresh-culture-scenery_1171203.htm#fromView=keyword&page=1&position=3&uuid=ee66d3ac-a103-489d-ab33-60d1e9b8921d&query=Green+farm")', // Placeholder image
+          backgroundImage: 'url("https://img.freepik.com/premium-photo/dirt-road-large-green-wheat-field-beautiful-clouds-agricultural-land_592721-689.jpg")', // Placeholder image
           maskImage: 'linear-gradient(to top, black 10%, transparent 100%)', // Fades the top of the image
           WebkitMaskImage: 'linear-gradient(to top, black 50%, transparent 100%)', // For Safari compatibility
         }}
@@ -22,8 +22,8 @@ const HeroSection = () => {
       {/* Decorative elements (adjust positioning as needed) */}
       <FaStarOfLife className="absolute top-10 left-10 text-emerald-600 text-xl rotate-45" />
       <FaPlus className="absolute top-20 right-10 text-emerald-600 text-xl" />
-      <FaPlus className="absolute bottom-1/3 left-20 text-emerald-600 text-xl" />
-      <FaStarOfLife className="absolute bottom-40 right-40 text-emerald-600 text-xl rotate-45" />
+      {/* <FaPlus className="absolute bottom-1/3 left-20 text-emerald-600 text-xl" /> */}
+      {/* <FaStarOfLife className="absolute bottom-40 right-40 text-emerald-600 text-xl rotate-45" /> */}
 
       {/* Content Container */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 md:px-8 max-w-4xl mx-auto">
