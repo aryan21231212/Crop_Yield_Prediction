@@ -548,7 +548,7 @@ const YieldPredictionForm = () => {
                   <InputField
                     label="Sunshine Hours"
                     type="number"
-                    field="Sunshine_hours"
+                    field="Sunshine_hr"
                     placeholder="hours/day"
                     icon={Sun}
                     step="0.1"
