@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PillNavbar from "./pages/PillNavbar";
 import AgriTechLandingPage from "./pages/AgriTechLandingPage";
 import YieldsPage from "./pages/YieldsPage";
+import CropDiseasePredictor from "./pages/CropDiseasePredictor";
 // import CropsPage from "./pages/CropsPage";
 // import WeatherPage from "./pages/WeatherPage";
 import AboutPage from "./pages/AboutPage";
@@ -21,8 +22,13 @@ const App = () => {
           <Route path="/" element={<AgriTechLandingPage />} />
           <Route path="/yields" element={<YieldsPage />} />
           {/* <Route path="/crops" element={<CropsPage />} /> */}
+<<<<<<< HEAD
           {/* <Route path="/weather" element={<AgriWeatherPage />} /> */}
           <Route path="/about" element={<AboutPage />} />
+=======
+          <Route path="/disease" element={<CropDiseasePredictor />} />
+          {/* <Route path="/about" element={<AboutPage />} /> */}
+>>>>>>> 7f5d779 (changes made)
         </Routes>
       </div>
     </Router>

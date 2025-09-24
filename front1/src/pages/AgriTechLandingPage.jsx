@@ -4,12 +4,13 @@ import Homepage from './Homepage'
 import ContentGridSection from './ContentGridSection'
 import SolutionsGridSection from './SolutionGridSection'
 import Footer from './Footer'
+import logo from '../assets/logo.png'
 
 const AgriTechLandingPage = () => {
   return (
     <div>
       <div className='flex justify-between items-center px-10'>
-        <div> logo</div>
+        <div className='w-22 '> <img src={logo} alt="logo" /></div>
          <div><PillNavbar/></div>
          <div className='flex gap-5 items-center font-bold'>
         <div>Sign in</div>

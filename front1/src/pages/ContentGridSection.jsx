@@ -1,8 +1,10 @@
 // src/components/ContentGridSection.jsx
 import React, { useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-
-const categories = ["Organic farm", "Automation farm", "Bio-medical farm"];
+import logo from '../assets/logo.png'
+import ScrollingBar from "../components/ScrollingBar";
+import TrueFocus from "../components/TrueFocus";
+const categories = ["Organic farm"];
 
 const cardImages = [
   "https://thumbs.dreamstime.com/b/farmer-digital-tablet-controls-autonomous-tractor-smart-farm-271870978.jpg",
@@ -12,7 +14,7 @@ const cardImages = [
 ];
 
 const ContentGridSection = () => {
-  const [activeCategory, setActiveCategory] = useState("Organic farm");
+  const [activeCategory, setActiveCategory] = useState("");
 
   return (
     <section className="bg-gray-100 py-16 md:py-24 px-4 sm:px-6 lg:px-8">
@@ -20,21 +22,13 @@ const ContentGridSection = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-20 mb-16">
         <div className="flex flex-col md:pr-10">
           <p className="text-gray-500 text-lg font-semibold mb-8">2025</p>
-          <div className="flex flex-wrap gap-x-6 gap-y-3 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`text-lg font-medium pb-1 relative ${
-                  activeCategory === category
-                    ? "text-zinc-900 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-zinc-900"
-                    : "text-gray-500 hover:text-zinc-700"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+          <div className="flex flex-wrap gap-x-6 gap-y-3 justify-center mb-12">
+           <TrueFocus/>
+
+          
           </div>
+          {/* <div className="w-80"><img src={logo} alt="" /></div> */}
+          <ScrollingBar/>
         </div>
 
         <div className="flex flex-col pl-0 md:pl-10 border-l border-gray-300 md:border-none">

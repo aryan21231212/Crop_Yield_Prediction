@@ -1,27 +1,33 @@
-import express from "express"
-import cors from "cors"
-import mongoose from "mongoose"
-import dotenv from "dotenv"
-
-
+import express from "express";
+import cors from "cors";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import predictRoutes from "./routes/disease.js"; // use import instead of require
 
 dotenv.config();
+
 const app = express();
+const PORT = process.env.PORT || 3000;
 
+// Middleware
 app.use(cors());
-const PORT = 3000;
+app.use(express.json());
 
-//DB
-mongoose.connect(process.env.MONGO_URL)
-.then(() => console.log("Connected to MongoDB"))
-.catch((err) => console.error("DB connection error:", err.message));
+// Routes
+app.use("/api/predict", predictRoutes);
 
+// Root route
+app.get("/", (req, res) => {
+  res.send("Hello World from Agri Platform Backend");
+});
 
-app.listen(PORT,()=>{
-    console.log("Server is listening on port 3000")
-})
+// Connect to MongoDB
+mongoose
+  .connect(process.env.MONGO_URL)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("DB connection error:", err.message));
 
-
-app.get("/",(req,res)=>{
-    res.send("Hello World from Agri Platform Backend")
-})
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});

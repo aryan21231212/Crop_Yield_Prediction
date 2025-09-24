@@ -5,15 +5,16 @@ import { BsArrowRight } from 'react-icons/bs'; // For the arrow icon in the butt
 import { FaPlus, FaStarOfLife } from 'react-icons/fa'; // Using FaPlus for the star-like elements
 import GlassyBadge from '../../../front1/src/components/GlassyBadge';
 import MorphingButton from '../../../front1/src/components/MorphingButton';
-
+import back from '../assets/bg.png'
+import RotatingText from '../components/RotatingText';
 const HeroSection = () => {
   return (
-    <div className="relative w-full min-h-screen bg-gray-100 flex flex-col items-center justify-start pt-20 overflow-hidden">
+    <div className="relative w-full min-h-screen bg-gray-100 flex flex-col items-center justify-start pt-20 overflow-hidden ">
       {/* Background image at the bottom, adjusted to match the reference */}
       <div
         className="absolute bottom-0 left-0 w-full h-[300px] md:h-[450px] bg-cover bg-center"
         style={{
-          backgroundImage: 'url("https://img.freepik.com/premium-photo/dirt-road-large-green-wheat-field-beautiful-clouds-agricultural-land_592721-689.jpg")', // Placeholder image
+          backgroundImage: `url(${back})`, // Placeholder image
           maskImage: 'linear-gradient(to top, black 10%, transparent 100%)', // Fades the top of the image
           WebkitMaskImage: 'linear-gradient(to top, black 50%, transparent 100%)', // For Safari compatibility
         }}
@@ -33,10 +34,32 @@ const HeroSection = () => {
           <span><GlassyBadge/></span>
         </div>
 
-        {/* Main Heading */}
-        <h1 className="text-4xl md:text-6xl font-extrabold text-zinc-900 leading-tight mb-6">
-          Bring Fresh Growth <br className="hidden md:block" /> To Agriculture.
-        </h1>
+      {/* Main Heading */}
+<div className="text-4xl md:text-6xl font-extrabold text-zinc-900 leading-tight mb-6 flex flex-wrap items-center gap-2 justify-center">
+  <span>Bring</span>
+  
+  <span className="flex mx-4">
+    <RotatingText
+      texts={['Bright', 'Smart', 'Heavy', 'Faster']}
+      mainClassName="bg-transparent text-blue-600 overflow-hidden px-2  rounded-lg"
+      staggerFrom="last"
+      initial={{ y: '100%' }}
+      animate={{ y: 0 }}
+      exit={{ y: '-120%' }}
+      staggerDuration={0.025}
+      splitLevelClassName="overflow-hidden  sm:pb-1 md:pb-1"
+      transition={{ type: 'spring', damping: 30, stiffness: 400 }}
+      rotationInterval={2000}
+    />
+  </span>
+
+  <span>Growth</span>
+  
+  <br className="hidden md:block" />
+  
+  <span>To Agriculture.</span>
+</div>
+
 
         {/* Sub-heading / Description */}
         <p className="text-base md:text-lg text-gray-600 mb-10 max-w-xl">

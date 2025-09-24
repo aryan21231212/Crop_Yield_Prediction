@@ -5,9 +5,9 @@ export default function GlassyBadge() {
   return (
     <div
       className="inline-flex items-center gap-3 px-5 py-2 rounded-full
-                 bg-white/6 backdrop-blur-md border border-white/10
+                 bg-white/6 backdrop-blur-md border border-white/2
                  shadow-lg hover:scale-[1.03] transform-gpu transition
-                 duration-200 ease-out"
+                 duration-200 ease-out mb-12"
     >
       {/* blinking dot with ring */}
       <span className="relative flex items-center justify-center w-3 h-3">
