@@ -25,4 +25,9 @@ def estimate_irrigation_schedule(crop, season_start_date, season_end_date,
         schedule.append({"date":date.strftime("%Y-%m-%d"), "apply_mm":per_week_mm})
 
     return {
-        "season_crop_water_requirement_mm":
+        "season_crop_water_requirement_mm": cwr,
+        "forecasted_rainfall_mm": forecasted_rainfall_mm,
+        "already_irrigated_mm": already_irrigated_mm,
+        "deficit_mm": deficit,
+        "weekly_schedule": schedule
+    }

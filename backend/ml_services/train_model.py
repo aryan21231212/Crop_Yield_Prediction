@@ -1,4 +1,3 @@
-# ml_services/train_model.py
 import os
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split, GridSearchCV
@@ -8,6 +7,8 @@ import numpy as np
 
 from ml_services.data_loader import load_csv, filter_recent_years
 from ml_services.preprocess import build_preprocessing_pipeline, save_pipeline, ARTIFACT_DIR, NUMERIC_FEATURES, CATEGORICAL_FEATURES
+from ml_services.constants import MODEL_PATH, ARTIFACT_DIR
+
 
 MODEL_PATH = os.path.join(ARTIFACT_DIR, 'model.joblib')
 
